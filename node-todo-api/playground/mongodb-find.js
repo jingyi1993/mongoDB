@@ -18,13 +18,33 @@ MongoClient.connect('mongodb://localhost:27017/Users',
         }
         console.log('Connected to mongodb server');
 //use the find method to fetch data from mongodb;
-        db.collection('Todos').find().toArray()
-        //return a propmise, use .then to catch the promise;
+        //in finf method we can find some property(like _id,completed)
+        // db.collection('Todos').find({
+        //     _id:new ObjectID('5b1aefe24e59a0e0bd3a0938')
+        // }).toArray()
+        // //return a propmise, use .then to catch the promise;
+        //     .then((docs)=>{
+        //     console.log('todos');
+        //     console.log(docs)
+        // },(err=>{
+        //     console.log('Unable to fetch todos')
+        //     }));
+        //
+        //
+        // db.close();
+        // db.collection('Users').find().count()
+        //     .then((count)=>{
+        //         console.log(`todos count:${count}`);
+        //     },(err=>{
+        //         console.log('Unable to fetch todos')
+        //     }));
+
+        db.collection('Users').find({name:'Jingyi'}).toArray()
             .then((docs)=>{
-            console.log('todos');
-            console.log(docs)
-        },(err=>{
-            console.log('Unable to fetch todos')
+                console.log('find all Jingyi as bellow!');
+                console.log(docs);
+            },(err=>{
+                console.log('Unable to fetch todos')
             }));
 
 
